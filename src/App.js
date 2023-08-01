@@ -1,34 +1,9 @@
 // import studentData from './data/StudentsData';
 import { useState } from 'react';
 import './App.css';
-// import Students from './components/Students';
-// import Styles from './components/Styles'
- 
-const Student = ({name, bio, scores}) => {
-  return (
-    <div> 
-      <h2 className='title'>Student Info</h2>
-      <h3>Name: {name}</h3>
-      <h4>Bio: {bio}</h4>
-      {/* <h4>Score: {scoreElement.score}</h4>
-      <h4>S: {scoreElement.score}</h4> */}
-      <h2 className='title'>Score Info:</h2>
-      {scores.map((score, index) => (
-        <Score key={index} date={score.date} score={score.score} />
-      ))}
-      
-    </div>
-  );
-};
+import Score from './components/Score';
+import Students from './components/Students';
 
-const Score = ({date, score}) => {
-  return (
-    <div className='scoreInfo'>
-    <h4>Date: {date}</h4>
-    <h4>Score: {score}</h4>
-    </div>
-  )
-}
 
 function App() {
   const [studentData, setStudentData] = useState({  
@@ -100,27 +75,15 @@ function App() {
     const studentElement = studentData.students ? (
       studentData.students.map((student) =>
       <div key={student.name} >
-         <Student name={student.name} bio={student.bio} scores={student.scores}
+         <Students name={student.name} bio={student.bio} scores={student.scores}
         />
       </div>
       )
     ) : (
       <h4>Loading ...</h4>
     );
-
-    // const scoreElement = studentData.students.scores ? (
-    //   studentData.students.scores.map((score, index) =>
-    //   <div key={index}  className='scoreInfo'>
-    //     <Score date={score.date} score={score.score}
-        
-    //   />
-    //   </div>
-    // )
-    // ) : (
-    //   <h4>Loading ...</h4>
-    // );
-
-  return (
+       
+    return (
     <div className="App">
       <h1 className='appname'>Students App</h1>
         <div className='studentInfo'> 
@@ -130,10 +93,8 @@ function App() {
           <h3>Score Info</h3>
           {scoreElement}
         </div> */}
-      </div>   
-      
-      
-   
+      </div>       
+         
   );
 }
 
